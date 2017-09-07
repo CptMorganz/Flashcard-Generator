@@ -54,6 +54,7 @@ function ask() {
 			ask();
 		} else {
 			console.log("Flashcard(s) Created!");
+			console.log("Now for the Quiz!");
 			quiz();
 		}
 	});
@@ -72,10 +73,12 @@ function storeNewCloze(fullText, cloze, partialText) {
 	});
 };
 
+// Quiz section using recursion to go through array of cloze cards created earlier.
+// Variable used for the recursion, couldn't seem to get For loop to work properly.
+var i = 0;
 function quiz() {
-	console.log("Now for the Quiz!");
 
-	for (var i = 0; i < questionArray.length; i++) {
+	if (i < questionArray.length) {
 		// Variables for checking Answers.
 		var correctAns = questionArray[i].cloze;
 		var ans;
@@ -91,6 +94,8 @@ function quiz() {
 		inquirer.prompt(quizQuestions).then(function (answer) {
 			ans = answer.text;
 			questionCheck(ans, correctAns);
+			i++;
+			quiz();
 		});
 	}
 };
