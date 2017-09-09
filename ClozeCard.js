@@ -15,7 +15,7 @@ var ClozeCard = function(text, cloze) {
 			if (this.fullText.includes(this.cloze)) {
 				return this.fullText.replace(this.cloze, '...');	// Replace Cloze with '...'
 			} else {
-				// Broken cloze message returned when text doesn't containt cloze.
+				// Broken cloze message returned when text doesn't contain cloze.
 				var brokenClozeMessage = "Oops! The full text: '" + this.fullText + "' doesn't contain the cloze: '" + this.cloze + "'.";
 				return brokenClozeMessage;
 			}
